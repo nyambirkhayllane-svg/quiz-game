@@ -4,9 +4,9 @@ Plataforma interativa para criação e realização de quizzes de múltipla esco
 
 ## Objetivo
 
-O **Quiz Game Platform** permite que utilizadores criem, editem e joguem quizzes de múltipla escolha.
+O **Quiz Game Platform** tem como objetivo permitir que os utilizadores criem e joguem quizzes de múltipla escolha, individualmente ou em equipa.
 
-A plataforma deverá incluir funcionalidades como:
+Entre as funcionalidades previstas estão:
 
 * Registo e login de utilizadores
 * Criação e gestão de quizzes
@@ -19,98 +19,100 @@ A plataforma deverá incluir funcionalidades como:
 * Modo equipa
 * Histórico de partidas
 
-## Tech Stack
+## Stack Proposta
+
+> **Nota:** esta stack é uma proposta inicial e ainda deverá ser validada pela equipa.
+> Como a equipa está numa fase de aprendizagem e o prazo do projeto é de 2 semanas, as tecnologias podem ser simplificadas ou ajustadas conforme o conhecimento da equipa e a complexidade encontrada durante o desenvolvimento.
 
 ### Backend
 
-* Java 21
+Tecnologias inicialmente consideradas:
+
+* Java
 * Spring Boot
+
+O Java foi considerado porque é uma das tecnologias já conhecidas pela equipa.
+
+O Spring Boot foi proposto porque facilita a criação de APIs e aplicações web em Java, mas ainda deverá ser avaliado pela equipa antes de ser considerado uma decisão definitiva.
+
+### Frontend
+
+Tecnologias inicialmente consideradas:
+
+* HTML5
+* CSS3
+* JavaScript
+
+HTML e CSS serão utilizados para a estrutura e apresentação da interface.
+
+JavaScript será necessário para funcionalidades como:
+
+* comunicação com a API;
+* carregamento dinâmico de quizzes;
+* envio de respostas;
+* temporizador;
+* atualização de pontuação;
+* autenticação;
+* leaderboard.
+
+### Base de Dados
+
+Proposta inicial:
+
+* PostgreSQL
+
+O PostgreSQL foi sugerido por ser uma base de dados relacional e por o projeto possuir várias entidades relacionadas, como:
+
+* utilizadores;
+* quizzes;
+* perguntas;
+* opções;
+* partidas;
+* respostas;
+* resultados;
+* equipas.
+
+
+### Tecnologias e Ferramentas a Avaliar
+
+As seguintes tecnologias foram sugeridas, mas **não são ainda obrigatórias**:
+
 * Spring Web
 * Spring Data JPA
 * Hibernate
 * Spring Security
 * JWT
 * Maven
-
-### Frontend
-
-* HTML5
-* CSS3
-* JavaScript ES6+
-
-### Database
-
-* PostgreSQL
-
-### Testing
-
 * JUnit
 * Spring Boot Test
 * Postman
 
-### Version Control
+Estas ferramentas só deverão ser adotadas se forem necessárias para o projeto e se a equipa conseguir utilizá-las dentro do prazo disponível.
 
-* Git
-* GitHub
+## Arquitetura Proposta
 
-## Estrutura Geral do Projeto
-
-```text
-quiz-game-platform/
-│
-├── backend/
-│   ├── pom.xml
-│   └── src/
-│       ├── main/
-│       │   ├── java/
-│       │   │   └── com/
-│       │   │       └── buildlearn/
-│       │   │           └── quizgame/
-│       │   │               ├── config/
-│       │   │               ├── controller/
-│       │   │               ├── dto/
-│       │   │               ├── exception/
-│       │   │               ├── model/
-│       │   │               ├── repository/
-│       │   │               ├── security/
-│       │   │               ├── service/
-│       │   │               └── QuizGameApplication.java
-│       │   │
-│       │   └── resources/
-│       │       └── application.properties
-│       │
-│       └── test/
-│
-├── frontend/
-│   ├── index.html
-│   ├── pages/
-│   ├── css/
-│   ├── js/
-│   │   ├── api/
-│   │   ├── auth/
-│   │   ├── quiz/
-│   │   ├── game/
-│   │   └── utils/
-│   └── assets/
-│
-├── docs/
-│   ├── architecture.md
-│   └── .env.example
-│
-├── .gitignore
-└── README.md
-```
-
-## Arquitetura
-
-A aplicação segue uma arquitetura cliente-servidor.
+A arquitetura inicial considerada é:
 
 ```text
 Frontend
    ↓
 HTTP / JSON
    ↓
-Spring Boot REST API
+Backend / API REST
+   ↓
+Lógica da aplicação
+   ↓
+Acesso aos dados
+   ↓
+Base de Dados
+```
+
+Caso a equipa confirme a utilização de Spring Boot, a organização poderá seguir uma estrutura semelhante a:
+
+```text
+Frontend
+   ↓
+API REST
    ↓
 Controller
    ↓
@@ -121,80 +123,26 @@ Repository
 PostgreSQL
 ```
 
-O frontend comunica com o backend através de uma API REST.
+Esta estrutura não é definitiva e poderá ser ajustada conforme a evolução do projeto.
 
-O backend é responsável pela lógica de negócio, autenticação, validação, acesso à base de dados e processamento das partidas.
-
-## Como executar o Backend
-
-### Pré-requisitos
-
-É necessário ter instalado:
-
-* Java 21
-* Maven
-* PostgreSQL
-
-### Executar
-
-Entrar na pasta do backend (quando o diretório `backend/` existir no repositório):
-
-```bash
-cd backend
-```
-
-Instalar as dependências e compilar:
-
-```bash
-mvn clean install
-```
-
-Executar a aplicação:
-
-```bash
-mvn spring-boot:run
-```
-
-Por padrão, a API deverá ficar disponível em:
+## Estrutura Proposta do Projeto
 
 ```text
-http://localhost:8080
+quiz-game-platform/
+│
+├── backend/
+│
+├── frontend/
+│
+├── docs/
+│   └── architecture.md
+│
+├── .gitignore
+├── .env.example
+└── README.md
 ```
 
-## Configuração da Base de Dados
-
-Criar uma base de dados PostgreSQL para o projeto.
-
-As configurações locais deverão ser definidas através das variáveis de ambiente ou do ficheiro de configuração local.
-
-Exemplo:
-
-```env
-DATABASE_URL=
-DATABASE_USERNAME=
-DATABASE_PASSWORD=
-JWT_SECRET=
-```
-
-Nunca devem ser adicionadas passwords, tokens ou outras credenciais reais ao repositório.
-
-## Como executar o Frontend
-
-Entrar na pasta do frontend (quando o diretório `frontend/` existir no repositório):
-
-```bash
-cd frontend
-```
-
-Para desenvolvimento local, o frontend pode ser aberto através de um servidor local.
-
-Por exemplo, utilizando a extensão **Live Server** no VS Code.
-
-O frontend deverá comunicar com a API disponível em:
-
-```text
-http://localhost:8080/api
-```
+A estrutura interna das pastas `backend` e `frontend` será definida pelos membros responsáveis por essas áreas durante a Fase 1.
 
 ## Git Workflow
 
@@ -209,29 +157,25 @@ fix/*
 
 ### `main`
 
-Contém apenas versões estáveis do projeto.
+Contém a versão mais estável do projeto.
 
-Não devem ser feitos pushes diretos para esta branch.
+Não devem ser feitas alterações diretamente nesta branch.
 
 ### `develop`
 
-Branch utilizada para integração do trabalho da equipa.
-
-As funcionalidades concluídas devem ser integradas nesta branch através de Pull Requests.
+É utilizada para integração do trabalho realizado pela equipa.
 
 ### `feature/*`
 
-Cada nova funcionalidade deverá ser desenvolvida numa branch própria criada a partir da `develop`.
+Cada nova funcionalidade ou tarefa deverá ser desenvolvida numa branch própria criada a partir da `develop`.
 
 Exemplos:
 
 ```text
-feature/backend-setup
 feature/database-setup
+feature/backend-setup
 feature/frontend-setup
 feature/auth
-feature/quiz-crud
-feature/gameplay
 ```
 
 ### `fix/*`
@@ -249,7 +193,7 @@ fix/login-validation
 ```text
 develop
    ↓
-feature/nome-da-feature
+feature/nome-da-tarefa
    ↓
 desenvolvimento
    ↓
@@ -266,29 +210,22 @@ Pull Request
 main
 ```
 
-## Convenção de Commits
+Os membros da equipa devem evitar alterações diretas na `main`.
 
-Utilizamos mensagens de commit claras e objetivas.
+Sempre que possível, um Pull Request deverá ser revisto por pelo menos outro membro da equipa antes do merge.
+
+## Convenção de Commits
 
 Exemplos:
 
 ```text
-feat: add user registration
-feat: create quiz endpoint
-fix: correct login validation
-docs: update project documentation
-test: add authentication tests
-refactor: reorganize quiz service
-chore: configure project
+feat: adicionar funcionalidade de login
+fix: corrigir validação do formulário
+docs: atualizar documentação
+test: adicionar testes
+refactor: reorganizar código
+chore: configurar projeto
 ```
-
-## Equipa
-
-### Khayllane Nyambir
-### Cesarino Nhabangue
-### Mirafilda Gamboa
-### Lonel Vasco
-### Manuel Guirute
 
 
 ## Gestão de Tarefas
@@ -304,17 +241,20 @@ Review
 Done
 ```
 
+Cada membro é responsável por atualizar o estado das suas tarefas.
+
 ## Definition of Done
 
-Uma tarefa só deve ser considerada concluída quando:
+Uma tarefa poderá ser considerada concluída quando:
 
-* O código estiver funcional
-* A tarefa tiver sido testada localmente
+* A implementação estiver funcional
+* Tiver sido testada localmente
 * Não existirem erros críticos conhecidos
 * O Pull Request tiver sido criado
-* O código tiver sido revisto
-* O trabalho tiver sido integrado na `develop`
-* A documentação relevante tiver sido atualizada
+* O trabalho tiver sido revisto
+* A alteração tiver sido integrada na branch adequada
+* A documentação relevante tiver sido atualizada, quando necessário
+
 
 ## Prazo
 
