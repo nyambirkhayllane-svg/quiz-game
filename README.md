@@ -135,10 +135,10 @@ quiz-game-platform/
 ├── frontend/
 │
 ├── docs/
-│   └── architecture.md
+│   ├── architecture.md
+│   └── .env.example
 │
 ├── .gitignore
-├── .env.example
 └── README.md
 ```
 
