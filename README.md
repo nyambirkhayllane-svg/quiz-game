@@ -4,7 +4,7 @@ Plataforma interativa para criação e realização de quizzes de múltipla esco
 
 ## Objetivo
 
-O **Quiz Game Platform** tem como objetivo permitir que os utilizadores criem e joguem quizzes de múltipla escolha, individualmente ou em equipa.
+A **Quiz Game Platform** tem como objetivo permitir que os utilizadores criem e joguem quizzes de múltipla escolha, individualmente ou em equipa.
 
 Entre as funcionalidades previstas estão:
 
