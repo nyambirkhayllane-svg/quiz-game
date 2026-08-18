@@ -137,7 +137,7 @@ O backend é responsável pela lógica de negócio, autenticação, validação,
 
 ### Executar
 
-Entrar na pasta:
+Entrar na pasta do backend (quando o diretório `backend/` existir no repositório):
 
 ```bash
 cd backend
