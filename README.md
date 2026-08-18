@@ -95,11 +95,9 @@ quiz-game-platform/
 │
 ├── docs/
 │   ├── architecture.md
-│   ├── api.md
-│   └── database.md
+│   └── .env.example
 │
 ├── .gitignore
-├── .env.example
 └── README.md
 ```
 
