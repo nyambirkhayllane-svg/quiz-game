@@ -180,7 +180,7 @@ Nunca devem ser adicionadas passwords, tokens ou outras credenciais reais ao rep
 
 ## Como executar o Frontend
 
-Entrar na pasta:
+Entrar na pasta do frontend (quando o diretório `frontend/` existir no repositório):
 
 ```bash
 cd frontend
